@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { configureStore } from "@reduxjs/toolkit";
-import globalReducer from "states";
+import globalReducer from "./states/index";
 import { Provider } from "react-redux";
 
 
@@ -16,8 +16,8 @@ const store = configureStore({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provide store={store}>
+    <Provider store={store}>
       <App />
-    </Provide>
+    </Provider>
   </React.StrictMode>
 );
