@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -9,6 +9,11 @@ import clientRoutes from "./routes/client.js";
 import managementRoutes from "./routes/management.js";
 import generalRoutes from "./routes/general.js";
 import salesRoutes from "./routes/sales.js";
+
+
+import User from "./models/User.js";
+
+
 
 
 // configuration
@@ -24,11 +29,13 @@ app.use(bodyParser.urlencoded({ extended : false}));
 app.use(cors());
 
 
+
+
 // ROUTE
 app.use("/client" , clientRoutes);
-app.use("general" , generalRoutes);
-app.use("management" , managementRoutes);
-app.use("sales" , salesRoutes);
+app.use("/general" , generalRoutes);
+app.use("/management" , managementRoutes);
+app.use("/sales" , salesRoutes);
 
 
 
@@ -38,7 +45,9 @@ mongoose.connect(process.env.MONGODB_URL , {
     useNewUrlParser: true,
     useUnifiedTopology : true
 }).then(()=>{
-    app.listen(PORT , ()=> console.log("server port ",PORT ))
+    app.listen(PORT ,()=> {
+        console.log("server port ",PORT )
+    })
 }).catch((err) => {
     console.log(`${err} did not connect.`)
 })
