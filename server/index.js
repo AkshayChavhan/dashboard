@@ -15,11 +15,12 @@ import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductStats from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
+import OverallStats from "./models/OverallStats.js";
 
 
 
 // import
-import { dataUser , dataProduct , dataProductStat , dataTransaction} from "./data/index.js";
+import { dataUser , dataProduct , dataProductStat , dataTransaction , dataOverallStat } from "./data/index.js";
 
 
 // configuration
@@ -52,6 +53,7 @@ mongoose.connect(process.env.MONGODB_URL , {
     useUnifiedTopology : true
 }).then(()=>{
     app.listen(PORT ,async ()=> {
+        // await OverallStats.insertMany(dataOverallStat);
         // await Product.insertMany(dataProduct);
         // await ProductStats.insertMany(dataProductStat);
         // await Transaction.insertMany(dataTransaction);
