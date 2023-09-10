@@ -14,11 +14,12 @@ import salesRoutes from "./routes/sales.js";
 import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductStats from "./models/ProductStat.js";
+import Transaction from "./models/Transaction.js";
 
 
 
 // import
-import { dataUser , dataProduct , dataProductStat } from "./data/index.js";
+import { dataUser , dataProduct , dataProductStat , dataTransaction} from "./data/index.js";
 
 
 // configuration
@@ -53,6 +54,7 @@ mongoose.connect(process.env.MONGODB_URL , {
     app.listen(PORT ,async ()=> {
         // await Product.insertMany(dataProduct);
         // await ProductStats.insertMany(dataProductStat);
+        // await Transaction.insertMany(dataTransaction);
         console.log("server port ",PORT )
     })
 }).catch((err) => {
