@@ -10,7 +10,7 @@ import {
 import FlexBetween from "../component/FlexBetween";
 import { useDispatch } from "react-redux";
 import { setMode } from "../states/index";
-// import profileImage from "assets/profile.jpeg";
+import ProfileImg from "../assets/profile.jpeg";
 import {
   AppBar,
   Button,
@@ -87,7 +87,7 @@ function Navbar({ user ,isSidebarOpen, setIsSidebarOpen }) {
               <Box
                 component="img"
                 alt="profile"
-                // src={profileImage}
+                src={ProfileImg}
                 height="32px"
                 width="32px"
                 borderRadius="50%"
