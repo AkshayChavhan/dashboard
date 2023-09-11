@@ -40,12 +40,12 @@ app.use(cors());
 
 
 // ROUTE
-app.use("/" , loginUser);
 app.use("/register" , registerUser);
 app.use("/client" , clientRoutes);
 app.use("/general" , generalRoutes);
 app.use("/management" , managementRoutes);
 app.use("/sales" , salesRoutes);
+app.use("/" , loginUser);
 
 
 
