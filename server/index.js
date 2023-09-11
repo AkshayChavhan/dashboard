@@ -9,18 +9,19 @@ import clientRoutes from "./routes/client.js";
 import managementRoutes from "./routes/management.js";
 import generalRoutes from "./routes/general.js";
 import salesRoutes from "./routes/sales.js";
+import registerUser from "./controllers/registerUser.js";
+import loginUser from "./controllers/login.js";
 
 
-import User from "./models/User.js";
-import Product from "./models/Product.js";
-import ProductStats from "./models/ProductStat.js";
-import Transaction from "./models/Transaction.js";
-import OverallStats from "./models/OverallStats.js";
-import AffiliateStat from "./models/AffiliateStats.js";
+// import User from "./models/User.js";
+// import Product from "./models/Product.js";
+// import ProductStats from "./models/ProductStat.js";
+// import Transaction from "./models/Transaction.js";
+// import OverallStats from "./models/OverallStats.js";
+// import AffiliateStat from "./models/AffiliateStats.js";
 
 
-// import
-import { dataUser , dataProduct , dataProductStat , dataTransaction , dataOverallStat ,dataAffiliateStat } from "./data/index.js";
+// import { dataUser , dataProduct , dataProductStat , dataTransaction , dataOverallStat ,dataAffiliateStat } from "./data/index.js";
 
 
 // configuration
@@ -39,6 +40,8 @@ app.use(cors());
 
 
 // ROUTE
+app.use("/" , loginUser);
+app.use("/register" , registerUser);
 app.use("/client" , clientRoutes);
 app.use("/general" , generalRoutes);
 app.use("/management" , managementRoutes);

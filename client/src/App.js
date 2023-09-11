@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter , Routes ,Route , Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./scenes/dashboard";
 import Layout from "./scenes/layout";
 import Products from "./scenes/products";
@@ -16,7 +16,8 @@ import Monthly from "./scenes/monthly";
 import Breakdown from "./scenes/breakdown";
 import Admin from "./scenes/admin";
 import Performance from "./scenes/performance";
-
+import LoginUser from "./scenes/login/index";
+import RegisterUser from "./scenes/register/index";
 
 
 function App() {
@@ -28,8 +29,10 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
+            <Route path="/" element={<LoginUser />} />
+            <Route path="/register" element={<RegisterUser />} />
             <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              {/* <Route path="/" element={<Navigate to="/dashboard" replace />} /> */}
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
