@@ -23,12 +23,16 @@ import {
   MenuItem,
   useTheme,
 } from "@mui/material";
+// import CustomModel from "./CustomModel";
+import UserSettings from "../scenes/user/UserSettings";
 
-function Navbar({ user ,isSidebarOpen, setIsSidebarOpen }) {
+function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
   const dispatch = useDispatch();
   const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
@@ -70,7 +74,10 @@ function Navbar({ user ,isSidebarOpen, setIsSidebarOpen }) {
             )}
           </IconButton>
           <IconButton>
-            <SettingsOutlined sx={{ fontSize: "25px" }} />
+            <SettingsOutlined
+              onClick={() => setOpen(true)}
+              sx={{ fontSize: "25px" }}
+            />
           </IconButton>
 
           <FlexBetween>
@@ -121,8 +128,17 @@ function Navbar({ user ,isSidebarOpen, setIsSidebarOpen }) {
               <MenuItem onClick={handleClose}>Log Out</MenuItem>
             </Menu>
           </FlexBetween>
-          </FlexBetween>
+        </FlexBetween>
       </Toolbar>
+      {/* <CustomModel
+      openModal={open}
+      modalTitle="User Settings"
+      /> */}
+      <UserSettings
+        openDialogue = {open}
+        setOpenDialogue={setOpen}
+        dialogueTitle="User Settings"
+      />
     </AppBar>
   );
 }
