@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserId } from "../../states/index";
 
 
 const defaultTheme = createTheme();
@@ -33,6 +35,7 @@ function Copyright(props) {
 
 export default function LoginUser() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
     password: ""
@@ -41,7 +44,10 @@ export default function LoginUser() {
   const handleSubmit = async () => {
     try {
       const response = await axios.post("http://localhost:5001/", form);
-      if (response.status) {
+      console.log("response => ", response.data._id);
+      if (response.status === 201) {
+        const { _id } = response.data;
+        dispatch(setUserId(_id)); 
         navigate("/dashboard")
       }
     } catch (error) {
